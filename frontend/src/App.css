@@ -1,6 +1,8 @@
 #name{
   display:flex;
-  /* justify-content: center; */
+  justify-content: center;
+  align-items: center;
+  /* width: 120px; */
 
 }
 #name>p{
@@ -37,4 +39,57 @@ img{
   justify-content: flex-end;
   margin-right: 40px;
   margin-bottom: 40px;
+}
+p{
+  font-size: 12px;
+
+}
+#first{
+  display: flex;
+  height: 200px;
+  justify-content:space-evenly;
+  align-items: center;
+}
+#circle{
+  display: flex;
+  justify-content: center;
+}
+#ph{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+#ph>div+p{
+  margin-top: -3px;
+}
+#mail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mail>div+p{
+  margin-top: 0px;
+  margin-left: 5px;
+}
+#coun{
+  margin-top: -10px;
+}
+@media only screen and (max-width: 900px) {
+  #gr{
+    
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    width: 80%;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #gr{
+    
+    grid-template-columns: repeat(1,1fr);
+    gap: 15px;
+    width: 80%;
+    margin: auto;
+  }
 }
