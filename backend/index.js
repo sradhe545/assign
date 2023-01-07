@@ -24,7 +24,7 @@ app.get("/user",  (req, res) => {
 })
 app.get("/userdetail",  async(req, res) => {
 
-    let limit = Number(req.query.limit) || 20
+    let limit = Number(req.query.limit) || 10
     let page= Number(req.query.page) || 1
     let gender = req.query.gender||"both"
     const genderOptions=["male","female"]

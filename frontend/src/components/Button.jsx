@@ -1,15 +1,24 @@
-import React from 'react'
+import React, {useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+
 const Button = () => {
+  const [isloading,setIsLoading]=useState(false)
   const navigate=useNavigate()
-  const handleFetch=()=>{
-   axios.get("https://coinback-production.up.railway.app/user").then((res)=>{console.log(res.data)}).catch((err)=>{console.log(err)})
-   alert(`Data Fetched Successfully`)
+
+  const handleFetch=async ()=>{
+    if(isloading) return alert("Please Wait data is fetching now...")
+    setIsLoading(true)
+    console.log("mid"+isloading);
+    await axios.get("https://coinback-production.up.railway.app/user").then((res)=>{console.log(res.data);setIsLoading(false)}).catch((err)=>{console.log(err)})
+  
+   console.log("after"+isloading);
+ alert(`Data Fetched Successfully`)
   }
 const handleDelete=()=>{
+  alert(`Data will be Deleted Now`)
   axios.delete("https://coinback-production.up.railway.app/delete").then((res)=>{console.log("Deleted")}).catch((err)=>{console.log(err)})
-  alert(`Data Fetched Successfully`)
+ 
 }
   const handleDetails=()=>{
     navigate("/userdetails")

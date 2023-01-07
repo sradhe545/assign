@@ -3,28 +3,22 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import CircularProgress from '@mui/material/CircularProgress';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneIcon from '@mui/icons-material/Phone';
+import Pagination from './Pagination';
 const UserDetails = () => {
+    const [loader,setLoader]=useState(false)
     const [data,setData]=useState([])
     const [page,setPage]=useState(1)
-    const [totalPage,setTotalPage]=useState(1)
-    const [isLoading,setIsLoading]=useState(false)
-
+    const [totalPages,setTotalPages]=useState(1)
     const [filter,setFilter]=useState("")
     const handleChange=(e)=>{
         setFilter(e.target.value)
     }
-
     function getdata(){
-        setIsLoading(true)
+        setLoader(true)
         axios.get(`https://coinback-production.up.railway.app/userdetail?page=${page}&gender=${filter}`)
-        .then((res)=>{ setTotalPage(res.data.totalPages);setData(res.data.data);setIsLoading(false)})
+        .then((res)=>{ setTotalPages(res.data.totalPages);setData(res.data.data);setLoader(false)})
         .catch((err)=>{console.log(err)})
     }
-   
-    console.log(isLoading);
     useEffect(()=>{
        
         getdata()
@@ -33,11 +27,8 @@ const UserDetails = () => {
   
   return (
     <>
-    <div id="page">
-        <button disabled={page===1} onClick={()=>setPage(page-1)}>PREV</button>
-        <button>{page}</button>
-        <button disabled={page===totalPage} onClick={()=>setPage(page+1)}>NEXT</button>
-    </div>
+    <h1>User Details</h1>
+   
     <div id="sel">
         <select onChange={handleChange} >
             <option value="">Filter By Gender</option>
@@ -45,10 +36,40 @@ const UserDetails = () => {
             <option value="female">Female</option>
         </select>
     </div>
+
+
     {
-        isLoading?<div id="circle"><CircularProgress /></div>:
-  
-    <div id="gr">
+       loader?<div id="circle"><CircularProgress /></div>:
+        <>
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>D.O.B</th>
+                <th>Address</th>
+                <th>Phone</th>
+             </tr>
+             {
+                 data.map((el,i)=>{return(<>
+                  <tr>
+                    <td><img src={el.picture.large} alt="img"/></td>
+                    <td>{el.name.title} {el.name.first} {el.name.last}</td>
+                    <td>{el.email}</td>
+                    <td>{el.gender.toUpperCase()}</td>
+                    <td>{el.dob.date.split("T")[0]}</td>
+                    <td>{el.location.street.number},{el.location.street.name},<br/>{el.location.city}<br/>{el.location.state},{el.location.country}</td>
+                    <td>+{el.phone}</td>
+
+                  </tr>
+                 
+                 </>)})
+             }
+           
+</table>
+
+        {/* <div id="gr">
         {
             data.map((el,i)=>{return(<>
               <div id="sm">
@@ -92,8 +113,15 @@ const UserDetails = () => {
         }
 
         
-    </div>
+        </div> */}
+
+        <div id="page">
+          <Pagination page={page} totalPages={totalPages} handlePageChange={(value)=>setPage(value)}/>
+        </div>
+        </>
       }
+
+        
     </>
   )
 }

@@ -1,49 +1,18 @@
-#name{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  /* width: 120px; */
-
-}
-#name>p{
-  margin-left:5px;
-}
-
-img{
-  border-radius: 50%;
-}
-#img{
-  display: flex;
-  justify-content: center;
-}
-#sm{
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  padding: 20px 20px 20px 20px;
-}
-#gr{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-  width: 70%;
-  margin: auto;
-}
+h1{text-align: center;}
 #page{
   display: flex;
   justify-content: center;
   padding-top: 40px;
+  padding-bottom: 50px;
 }
 #sel{
   display: flex;
   justify-content: flex-end;
   margin-right: 40px;
   margin-bottom: 40px;
+  margin-top: 40px;
 }
-p{
-  font-size: 12px;
 
-}
 #first{
   display: flex;
   height: 200px;
@@ -54,42 +23,21 @@ p{
   display: flex;
   justify-content: center;
 }
-#ph{
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
+
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-#ph>div+p{
-  margin-top: -3px;
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
-#mail{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#mail>div+p{
-  margin-top: 0px;
-  margin-left: 5px;
-}
-#coun{
-  margin-top: -10px;
-}
-@media only screen and (max-width: 900px) {
-  #gr{
-    
-    grid-template-columns: repeat(2,1fr);
-    gap: 15px;
-    width: 80%;
-    margin: auto;
-  }
-}
-@media only screen and (max-width: 600px) {
-  #gr{
-    
-    grid-template-columns: repeat(1,1fr);
-    gap: 15px;
-    width: 80%;
-    margin: auto;
-  }
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
