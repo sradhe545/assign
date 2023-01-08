@@ -69,51 +69,7 @@ const UserDetails = () => {
            
 </table>
 
-        {/* <div id="gr">
-        {
-            data.map((el,i)=>{return(<>
-              <div id="sm">
-                <div id="img">
-                    
-                <img src={el.picture.large} alt="img"/>
-                </div>
-                
-
-                    
-                    <div id="name">
-                        <p><b>{el.name.title} {el.name.first} {el.name.last}</b></p>
-                      
-                    </div>
-                    <div><p>Gender: <b>{el.gender.toUpperCase()}</b></p></div>
-
-                    <div id="mail">
-                        <div><MailOutlineIcon/></div>
-                        <p><b>{el.email}</b></p>
-                    </div>
-                    
-                    <p>D.O.B- {el.dob.date.split("T")[0]}</p>
-                    
-                    <div>
-                        <div id="mail">
-                            <div><LocationOnIcon/></div>
-                            <p >{el.location.street.number},{el.location.street.name},{el.location.city}</p>
-                        </div>
-                        
-                        <p id="coun">{el.location.state},{el.location.country}</p>
-                        
-                        <div id="ph">
-                            <div><PhoneIcon/></div>
-                            <p>+{el.phone}</p>
-                        </div>
-                        <p></p>
-                    </div>
-                  
-              </div>
-            </>)})
-        }
-
-        
-        </div> */}
+      
 
         <div id="page">
           <Pagination page={page} totalPages={totalPages} handlePageChange={(value)=>setPage(value)}/>
